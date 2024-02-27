@@ -5,6 +5,7 @@ const validate = (schema) => (req, res, next) => {
     // const keys = ['params', 'query' , 'body']
     const keys = Object.keys(schema);
     const object = keys.reduce((obj, key) => {
+        // accumulator returns only keys that has values 
         if (Object.prototype.hasOwnProperty.call(req, key)) {
             obj[key] = req[key];
         }
@@ -12,6 +13,7 @@ const validate = (schema) => (req, res, next) => {
     }, {});
     console.log(object);
     
+    // to convert the schema def to convinient joy schema obj
     const { value, error } = joi.compile(schema).validate(object);
     if (error) {
         const errors = error.details

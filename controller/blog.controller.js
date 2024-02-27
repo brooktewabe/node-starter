@@ -1,7 +1,6 @@
 const Blog = require("../models/blog.model")
 const catchAsync = require("../utils/catchAsync")
 
-
 // removing error handing since controllers doesn't need to worry about error 
 
 // const {createBlogSchema} = require("../validations/blog.validation")
