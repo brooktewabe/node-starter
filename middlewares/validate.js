@@ -11,7 +11,7 @@ const validate = (schema) => (req, res, next) => {
         }
         return obj;
     }, {});
-    console.log(object);
+    logger.info(object);
     
     // to convert the schema def to convinient joy schema obj
     const { value, error } = joi.compile(schema).validate(object);
