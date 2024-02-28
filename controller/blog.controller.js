@@ -1,8 +1,8 @@
-const Blog = require("../models/blog.model")
+const httpStatus = require('http-status');
 const catchAsync = require("../utils/catchAsync")
+const {blogService} = require('../services')
 
 // removing error handing since controllers doesn't need to worry about error 
-
 // const {createBlogSchema} = require("../validations/blog.validation")
 // const createBlog = async (req, res) => {
     //     try {
@@ -15,13 +15,16 @@ const catchAsync = require("../utils/catchAsync")
 // }
 
 const createBlog = catchAsync(async(req, res) => {
-    await Blog.create(req.body);
-    res.send({ success: true, message: "Blog created" })
+    // await Blog.create(req.body) adding services
+    await blogService.createBlog(req.body);
+    res
+    .status(httpStatus.CREATED)    
+    .send({ success: true, message: "Blog created" })
 })
 
 const getBlogs =catchAsync(async (req, res) => {
-    const blogs = await Blog.find({});
-    res.json(blogs)
+    const blogs = await blogService.getBlogs();
+    res.status(httpStatus.OK).json(blogs)
 })
 
 module.exports= {

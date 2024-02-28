@@ -1,5 +1,6 @@
 const joi = require("joi");
 const ApiError = require("../utils/ApiError");
+const logger = require("../config/logger")
 const validate = (schema) => (req, res, next) => {
 
     // const keys = ['params', 'query' , 'body']
