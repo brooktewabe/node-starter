@@ -6,7 +6,13 @@ const loginSchema ={
         password: joi.string().required()
     })
 };
+const refreshTokenSchema ={
+    body: joi.object().keys({
+        refreshToken: joi.string().required()
+    })
+};
 
 module.exports = {
-    loginSchema
+    loginSchema,
+    refreshTokenSchema
 };

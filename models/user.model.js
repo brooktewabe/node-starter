@@ -16,7 +16,6 @@ const userSchema = mongoose.Schema(
             unique:true,
             trim:true,
             lowercase:true,
-            private:true,
             validate(value){
                 if(!validator.isEmail(value))
                     throw  new Error("Invalid Email")
@@ -27,6 +26,7 @@ const userSchema = mongoose.Schema(
             required:true,
             trim:true,
             minlength:8,
+            private:true,
             validate(value){
                 if(!validator.isStrongPassword(value))
                     throw  new Error("Password should contain atleast one uppercase and lowercase letter, number and special character")
