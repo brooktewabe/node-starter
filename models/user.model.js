@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require( 'validator' )
 const bcrypt = require('bcryptjs');
+const toJson = require('@meanie/mongoose-to-json');
 
 const userSchema = mongoose.Schema(
     {
@@ -15,6 +16,7 @@ const userSchema = mongoose.Schema(
             unique:true,
             trim:true,
             lowercase:true,
+            private:true,
             validate(value){
                 if(!validator.isEmail(value))
                     throw  new Error("Invalid Email")
@@ -43,14 +45,17 @@ userSchema.statics.isEmailTaken= async function(email){
 userSchema.pre('save', async function(next){
     const user = this
     if(user.isModified('password')){
-        user.password= bcrypt.hash(user.password,8);
+        user.password=await bcrypt.hash(user.password,8);
     };
     next()
 })
 userSchema.methods.isPasswordMatch= async function(password){
-    const User= this
-    return bcrypt.compare(user.password,userSchema)
+    const user= this
+    return await bcrypt.compare(password, user.password)
 }
+
+// to remove password and __v from login response
+userSchema.plugin(toJson)
 
 const User = mongoose.model( 'User', userSchema )  
 module.exports= User;
