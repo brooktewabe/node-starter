@@ -15,7 +15,6 @@ const {blogService} = require('../services')
 // }
 
 const createBlog = catchAsync(async(req, res) => {
-    // await Blog.create(req.body) adding services
     await blogService.createBlog(req.body);
     res
     .status(httpStatus.CREATED)    
