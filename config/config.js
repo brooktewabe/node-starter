@@ -22,5 +22,13 @@ module.exports = {
       maxAttemptByIpUsername: envVars.MAX_ATTEMPT_BY_IP_USERNAME,
       maxAttemptPerEmail: envVars.MAX_ATTEMPT_PER_EMAIL,
     },
+    cspOptions:{
+        directives:{
+            defaultSrc:["'self'"],
+            styleSrc:["'self'","'unsafe-inline'"],//allow exec of inline styles
+            scriptSrc:["'self'","'unsafe-inline'"],
+            fontSrc:["'self'",'fonts.gstatic.com'],
+        },
+    }
 
 };
