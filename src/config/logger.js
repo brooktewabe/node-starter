@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 const winston = require('winston'); // to log anything
 const config = require('./config');
 
