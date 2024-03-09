@@ -12,6 +12,8 @@ module.exports = {
   dbConnection: envVars.DB_CONNECTION,
   dbName: envVars.DB_NAME,
   env: envVars.NODE_ENV,
+  email: envVars.EMAIL,
+  emailPassword: envVars.EMAIL_PASSWORD,
   jwt: {
     secret: envVars.JWT_SECRET,
     accessExpirationMinutes: envVars.JWT_ACCESS_EXPIRATION_MINUTES,

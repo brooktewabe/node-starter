@@ -601,3 +601,6 @@ undefinedGET /blogs 200 12.888 ms PostmanRuntime/7.36.3 Wed, 28 Feb 2024 08:26:2
  POST /auth/login 200 70.026 ms PostmanRuntime/7.36.3 Fri, 08 Mar 2024 09:34:22 GMT
  POST /blog 201 6.432 ms PostmanRuntime/7.36.3 Fri, 08 Mar 2024 09:34:49 GMT
  POST /blog 401 11.978 ms PostmanRuntime/7.36.3 Fri, 08 Mar 2024 10:36:31 GMT - error-message: -
+ POST /auth/signup 404 4.810 ms PostmanRuntime/7.36.3 Sat, 09 Mar 2024 10:44:26 GMT - error-message: -
+ POST /auth/register 201 163.914 ms PostmanRuntime/7.36.3 Sat, 09 Mar 2024 10:44:46 GMT
+ POST /auth/register 201 74.313 ms PostmanRuntime/7.36.3 Sat, 09 Mar 2024 10:49:54 GMT
