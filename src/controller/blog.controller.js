@@ -32,7 +32,8 @@ const uploadFile = catchAsync(async (req, res) => {
   if (!req.file) {
     throw new ApiError(httpStatus.NOT_FOUND, 'File not found');
   }
-  res.status(httpStatus.OK).json({ fileName: req.file.filename });
+  const filename = await blogService.uploadFile(req.file);
+  res.status(httpStatus.OK).json({ fileName: filename });
 });
 
 const getFile = catchAsync(async (req, res) => {

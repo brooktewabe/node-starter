@@ -1,4 +1,5 @@
 const fs = require('fs');
+const sharp = require('sharp');
 const httpStatus = require('http-status');
 const { Blog } = require('../models');
 const ApiError = require('../utils/ApiError');
@@ -20,9 +21,17 @@ const getReadableFileStream = async (filename) => {
   const stream = fs.createReadStream(filePath);
   return stream;
 };
+const uploadFile = async (file) => {
+  const filename = `image-${Date.now()}.webp`;
+  const outputPath = `${__dirname}/../../uploads/${filename}`;
+  // resize file size and image size to 600 px, loseless: true - to maintain quality
+  sharp(file.buffer).resize(600).webp({ quality: 80 }).toFile(outputPath);
+  return filename;
+};
 
 module.exports = {
   createBlog,
   getBlogs,
   getReadableFileStream,
+  uploadFile,
 };
