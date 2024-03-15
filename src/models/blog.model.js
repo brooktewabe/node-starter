@@ -9,10 +9,9 @@ const blogSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  createdBy: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: 'User',
-    // required: true,
+  coverImage: {
+    type: String,
+    required: true,
   },
 });
 
