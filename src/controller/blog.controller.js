@@ -2,6 +2,8 @@ const httpStatus = require('http-status');
 const catchAsync = require('../utils/catchAsync');
 const { blogService } = require('../services');
 const ApiError = require('../utils/ApiError');
+const { ImageProcessor } = require('../background-tasks');
+const workers = require('../background-tasks/workers');
 
 // removing error handing since controllers doesn't need to worry about error
 // const {createBlogSchema} = require("../validations/blog.validation")
@@ -27,15 +29,19 @@ const getBlogs = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).json(blogs);
 });
 
-// first upload file using upload route then use it in createBlog body
 const uploadFile = catchAsync(async (req, res) => {
   if (!req.file) {
     throw new ApiError(httpStatus.NOT_FOUND, 'File not found');
   }
-  const filename = await blogService.uploadFile(req.file);
-  res.status(httpStatus.OK).json({ fileName: filename });
+  // run upload task in the background and  return file name immediately
+  const fileName = `image-${Date.now()}.webp`;
+  await ImageProcessor.Queue.add('ImageProcessorJob', {
+    fileName,
+    file: req.file,
+  });
+  await workers.start();
+  res.status(httpStatus.OK).json({ fileName });
 });
-
 const getFile = catchAsync(async (req, res) => {
   const { filename } = req.params;
   const stream = await blogService.getReadableFileStream(filename);
