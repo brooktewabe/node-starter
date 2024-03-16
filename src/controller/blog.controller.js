@@ -2,7 +2,7 @@ const httpStatus = require('http-status');
 const catchAsync = require('../utils/catchAsync');
 const { blogService } = require('../services');
 const ApiError = require('../utils/ApiError');
-const ImageProcessorQueue = require('../background-tasks/queues/image-processor');
+const { ImageProcessor } = require('../background-tasks');
 const workers = require('../background-tasks/workers');
 
 // removing error handing since controllers doesn't need to worry about error
@@ -35,7 +35,7 @@ const uploadFile = catchAsync(async (req, res) => {
   }
   // run upload task in the background and  return file name immediately
   const fileName = `image-${Date.now()}.webp`;
-  await ImageProcessorQueue.add('ImageProcessorJob', {
+  await ImageProcessor.Queue.add('ImageProcessorJob', {
     fileName,
     file: req.file,
   });
