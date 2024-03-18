@@ -1,7 +1,6 @@
 # A node js starter
 
 Passport jwt auth
-
 Mongo db
 Access and refresh token
 Success confirmation email after signup
