@@ -14,8 +14,8 @@ Rate limiter for brute force attack<br>
 XSS,NoSQL injection, clickjacking & MIME sniffing attack protections<br>
 CORS policy<br>
 Efficient file upload, compression<br>
-Background jobs using Redis <br>
-<br>
+Background jobs using Redis <be>
+
 # Requirement
 Node,<br>
 Redis (Redis-server must be running) and <br>
