@@ -47,6 +47,9 @@ userSchema.statics.isEmailTaken = async function (email) {
   // returns boolean
   return !!user;
 };
+// indexing  the email field for faster performance (ascending)
+userSchema.index({ email: 1 });
+
 userSchema.pre('save', async function (next) {
   const user = this;
   if (user.isModified('password')) {

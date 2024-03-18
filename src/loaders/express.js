@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const cors = require('cors');
 const blogRouter = require('../routes/blog.route');
+const commentRouter = require('../routes/comment.route');
 const authRouter = require('../routes/auth.route');
 const { errorHandler, errorConverter } = require('../middlewares/error');
 const ApiError = require('../utils/ApiError');
@@ -44,8 +45,11 @@ module.exports = async (app) => {
     app.use(cors());
     app.options('*', cors());
   }
+
   app.use(blogRouter);
   app.use(authRouter);
+  app.use(commentRouter);
+
   // path not found
   app.use((req, res, next) => {
     next(new ApiError(httpStatus.NOT_FOUND, '404 Not found'));

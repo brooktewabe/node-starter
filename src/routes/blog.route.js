@@ -13,6 +13,7 @@ router.get(
   // validate(blogValidation.getBlogSchema),
   blogController.getBlogs,
 );
+router.get('/blogs/search', auth, blogController.searchBlogs);
 router.get(
   '/recent-blogs',
   auth,
@@ -33,6 +34,5 @@ router.post(
   upload.single('coverImage'),
   blogController.uploadFile,
 );
-// eslint-disable-next-line prettier/prettier
 router.get('/blog/image/:filename', auth, blogController.getFile);
 module.exports = router;
