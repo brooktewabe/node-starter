@@ -16,7 +16,8 @@ CORS policy<br>
 Efficient file upload, compression<br>
 Background jobs using Redis <br>
 <br><br><br>
-#Requirement
+# Requirement
+<br><br>
 Node,<br>
 Redis (Redis-server must be running) and <br>
 Enabling the email sender by going to your Google Account > Security then enable 2-step verification and add a new app
