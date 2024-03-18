@@ -15,7 +15,7 @@ XSS,NoSQL injection, clickjacking & MIME sniffing attack protections<br>
 CORS policy<br>
 Efficient file upload, compression<br>
 Background jobs using Redis <br>
-<br><br><br>
+<br>
 # Requirement
 <br><br>
 Node,<br>
