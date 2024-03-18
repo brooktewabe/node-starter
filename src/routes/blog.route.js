@@ -4,6 +4,7 @@ const validate = require('../middlewares/validate');
 const { blogValidation } = require('../validations');
 const auth = require('../middlewares/auth');
 const upload = require('../utils/multer');
+const getRecentBlogCache = require('../middlewares/caches/recent-blogs');
 
 const router = express.Router();
 router.get(
@@ -12,6 +13,13 @@ router.get(
   // validate(blogValidation.getBlogSchema),
   blogController.getBlogs,
 );
+router.get(
+  '/recent-blogs',
+  auth,
+  getRecentBlogCache,
+  blogController.getRecentBlogs,
+);
+
 router.post(
   '/blog',
   auth,

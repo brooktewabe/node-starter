@@ -29,6 +29,12 @@ const getBlogs = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).json(blogs);
 });
 
+// redis caching 5 recent blogs until new one is added
+const getRecentBlogs = catchAsync(async (req, res) => {
+  const blogs = await blogService.getRecentBlogs();
+  res.status(httpStatus.OK).json(blogs);
+});
+
 const uploadFile = catchAsync(async (req, res) => {
   if (!req.file) {
     throw new ApiError(httpStatus.NOT_FOUND, 'File not found');
@@ -53,6 +59,7 @@ const getFile = catchAsync(async (req, res) => {
 module.exports = {
   createBlog,
   getBlogs,
+  getRecentBlogs,
   uploadFile,
   getFile,
 };
