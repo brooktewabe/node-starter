@@ -1,7 +1,7 @@
 # A node js starter
 
-Passport jwt auth
-Mongo db
+-Passport jwt auth
+- Mongo db
 Access and refresh token
 Success confirmation email after signup
 Error logger and access log(winston and morgan)
