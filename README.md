@@ -2,7 +2,7 @@
 
 Passport jwt auth<br>
 Mongo db<br>
-Access and refresh token<br>
+Access and refresh tokens<br>
 Success confirmation email after signup<br>
 Error logger and access log(winston and morgan)<br>
 Clean code - ESLinter & prettier for code formatting consistency<br>
