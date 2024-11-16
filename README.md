@@ -1,13 +1,13 @@
 # A node js starter
 
-Passport jwt auth<br>
+Passport JWT auth<br>
 Mongo db<br>
 Access and refresh tokens<br>
 Success confirmation email after signup<br>
-Error logger and access log(winston and morgan)<br>
+Error logger and access log(Winston and morgan)<br>
 Clean code - ESLinter & prettier for code formatting consistency<br>
 Husky to enforce formatting on git staged files <br>
-Api errors handling for dev and production env<br>
+API errors handling for dev and production env<br>
 Validation (joi)<br>
 Route protection<br>
 Rate limiter for brute force attack<br>
